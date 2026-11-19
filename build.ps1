@@ -43,6 +43,7 @@ try {
     Copy-Item -LiteralPath "$root/NOTICE.md" -Destination (Join-Path $output 'NOTICE.md')
     New-Item -ItemType Directory -Force (Join-Path $output 'licenses') | Out-Null
     Copy-Item -LiteralPath "$root/upstream/src/Resource/Minhook/LICENSE.txt" -Destination (Join-Path $output 'licenses/MinHook.txt')
+    Copy-Item -LiteralPath "$root/resources/fonts/OFL-GolosText.txt" -Destination (Join-Path $output 'licenses/OFL-GolosText.txt')
     Copy-Item -LiteralPath "$root/start.ps1" -Destination (Join-Path $output 'start.ps1')
     Copy-Item -LiteralPath "$root/start.cmd" -Destination (Join-Path $output 'start.cmd')
     New-Item -ItemType Directory -Force (Join-Path $output 'assistant') | Out-Null

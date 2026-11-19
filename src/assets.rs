@@ -1,5 +1,22 @@
-use gpui_kit::{AssetSource, SharedString};
+use gpui_kit::{App, AssetSource, SharedString, component::Theme};
 use std::borrow::Cow;
+
+pub const FONT_FAMILY: &str = "Golos Text";
+
+pub fn init_fonts(cx: &mut App) {
+    cx.text_system()
+        .add_fonts(vec![Cow::Borrowed(include_bytes!(
+            "../resources/fonts/GolosText-Variable.ttf"
+        ))])
+        .expect("Не удалось загрузить встроенный Golos Text");
+}
+
+pub fn apply_fonts(cx: &mut App) {
+    Theme::update(cx, |theme| {
+        theme.font_family = FONT_FAMILY.into();
+        theme.mono_font_family = FONT_FAMILY.into();
+    });
+}
 
 pub struct Assets;
 impl AssetSource for Assets {

@@ -249,6 +249,7 @@ impl Launcher {
             None,
             cx,
         );
+        crate::assets::apply_fonts(cx);
         cx.notify();
     }
     fn header(&self, p: Palette, cx: &mut Context<Self>) -> Div {
@@ -681,7 +682,7 @@ impl Launcher {
                     .id("journal-lines")
                     .overflow_y_scroll()
                     .p_5()
-                    .font_family("Consolas")
+                    .font_family(crate::assets::FONT_FAMILY)
                     .text_size(px(12.))
                     .flex()
                     .flex_col()
@@ -840,7 +841,7 @@ impl Render for Launcher {
             .border_1()
             .border_color(tint(if p.dark { 0x6592cf } else { 0x94baff }, 140))
             .bg(tint(if p.dark { 0x0d172b } else { 0xedf5ff }, 240))
-            .font_family("Segoe UI Variable Text")
+            .font_family(crate::assets::FONT_FAMILY)
             .text_size(px(14.))
             .text_color(rgb(p.text))
             .child(

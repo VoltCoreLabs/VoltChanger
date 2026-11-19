@@ -1,6 +1,6 @@
 [package]
 name = "voltchanger"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2024"
 license = "GPL-3.0-only"
 description = "VoltChanger — a Windows Dota 2 companion with a Rust/GPUI Kit launcher"

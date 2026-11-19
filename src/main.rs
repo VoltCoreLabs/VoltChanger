@@ -14,6 +14,7 @@ fn main() {
         .with_assets(crate::assets::Assets)
         .run(|cx| {
             gpui_kit::init(cx);
+            crate::assets::init_fonts(cx);
             gpui_kit::component::Theme::change(
                 if appearance::Appearance::load().dark {
                     gpui_kit::component::ThemeMode::Dark
@@ -23,6 +24,7 @@ fn main() {
                 None,
                 cx,
             );
+            crate::assets::apply_fonts(cx);
             cx.on_window_closed(|cx, _| {
                 if cx.windows().is_empty() {
                     cx.quit();
