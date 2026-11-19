@@ -1,0 +1,31 @@
+syntax = "proto2";
+package ovr;
+// Minimal wire views of CMsgDOTAGetPlayerMatchHistory{,Response} from the
+// SteamDatabase/Protobufs revision pinned in vendor/protos/revision.txt.
+message HistoryRequest {
+  optional uint32 account_id = 1;
+  optional uint32 matches_requested = 3;
+  optional uint32 request_id = 5;
+}
+message HistoryResponse {
+  message Match {
+    optional uint64 match_id = 1;
+    optional uint32 start_time = 2;
+    optional int32 hero_id = 3;
+    optional bool winner = 4;
+    optional uint32 duration = 11;
+  }
+  repeated Match matches = 1;
+  optional uint32 request_id = 2;
+}
+// Wire-compatible view of CSODOTAGameAccountPlus. Unknown fields are preserved.
+message PlusAccount {
+  optional uint32 account_id = 1;
+  optional uint32 original_start_date = 2;
+  optional uint32 plus_flags = 3;
+  optional uint32 plus_status = 4;
+  optional uint32 prepaid_time_start = 5;
+  optional uint32 prepaid_time_balance = 6;
+  optional fixed32 next_payment_date = 7;
+  optional fixed64 steam_agreement_id = 8;
+}

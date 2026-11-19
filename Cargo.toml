@@ -1,0 +1,23 @@
+[package]
+name = "voltchanger"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-only"
+description = "VoltChanger — a Windows Dota 2 companion with a Rust/GPUI Kit launcher"
+repository = "https://github.com/VoltCoreLabs/VoltChanger"
+readme = "README.md"
+
+[[bin]]
+name = "VoltChanger"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+gpui-kit = "=0.9.1"
+rfd = "0.15"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_System_Diagnostics_ToolHelp", "Win32_System_Diagnostics_Debug", "Win32_System_LibraryLoader", "Win32_System_Memory", "Win32_System_Threading", "Win32_Security", "Win32_UI_Shell", "Win32_UI_WindowsAndMessaging"] }
+
+[profile.release]
+strip = true

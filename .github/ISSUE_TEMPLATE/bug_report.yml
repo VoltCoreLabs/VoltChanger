@@ -1,0 +1,22 @@
+name: Bug report
+description: Report a reproducible VoltChanger problem
+title: "[Bug] "
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened?
+      description: Include expected behavior and steps to reproduce.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit and Dota 2 build
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Relevant diagnostics
+      description: Paste only the relevant lines. Remove account IDs, usernames, paths and credentials. Do not upload your inventory or complete cache.

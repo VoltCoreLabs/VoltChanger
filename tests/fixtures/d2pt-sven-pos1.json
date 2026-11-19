@@ -1,0 +1,175 @@
+[
+  {
+    "hero_id": 18,
+    "position": "pos 1",
+    "num_matches": 4072,
+    "num_wins": 2107,
+    "updated_at": "2026-07-04T22:44:13",
+    "build_data": {
+      "starting_items": [
+        {
+          "raw_item_id": 44,
+          "pr": 0.92
+        },
+        {
+          "raw_item_id": 11,
+          "pr": 0.9
+        },
+        {
+          "raw_item_id": 34,
+          "pr": 0.66
+        },
+        {
+          "raw_item_id": 16,
+          "pr": 0.44
+        },
+        {
+          "raw_item_id": 13,
+          "pr": 0.32
+        },
+        {
+          "raw_item_id": 20,
+          "pr": 0.27
+        },
+        {
+          "raw_item_id": 237,
+          "pr": 0.26
+        },
+        {
+          "raw_item_id": 16,
+          "pr": 0.22
+        }
+      ],
+      "items_mid_late": [
+        {
+          "raw_item_id": 252,
+          "pr": 0.9567779960707268,
+          "avg_minute": 14.758213552361395
+        },
+        {
+          "raw_item_id": 1,
+          "pr": 0.918467583497053,
+          "avg_minute": 18.14385026737968
+        },
+        {
+          "raw_item_id": 116,
+          "pr": 0.8347249508840865,
+          "avg_minute": 24.264195351573992
+        },
+        {
+          "raw_item_id": 141,
+          "pr": 0.7141453831041258,
+          "avg_minute": 28.257221458046768
+        },
+        {
+          "raw_item_id": 939,
+          "pr": 0.5886542239685658,
+          "avg_minute": 28.747601168126824
+        },
+        {
+          "raw_item_id": 108,
+          "pr": 0.0481335952848723,
+          "avg_minute": 31.18877551020408
+        },
+        {
+          "raw_item_id": 249,
+          "pr": 0.060166994106090374,
+          "avg_minute": 33.624489795918365
+        },
+        {
+          "raw_item_id": 112,
+          "pr": 0.05844793713163065,
+          "avg_minute": 34.76890756302521
+        }
+      ],
+      "abilities": [
+        {
+          "name": "sven_storm_bolt",
+          "ability_id": 5094
+        },
+        {
+          "name": "sven_warcry",
+          "ability_id": 5096
+        },
+        {
+          "name": "sven_great_cleave",
+          "ability_id": 5095
+        },
+        {
+          "name": "sven_great_cleave",
+          "ability_id": 5095
+        },
+        {
+          "name": "sven_great_cleave",
+          "ability_id": 5095
+        },
+        {
+          "name": "sven_gods_strength",
+          "ability_id": 5097
+        },
+        {
+          "name": "sven_great_cleave",
+          "ability_id": 5095
+        },
+        {
+          "name": "sven_storm_bolt",
+          "ability_id": 5094
+        },
+        {
+          "name": "sven_storm_bolt",
+          "ability_id": 5094
+        },
+        {
+          "name": "sven_storm_bolt",
+          "ability_id": 5094
+        }
+      ],
+      "talents": [
+        {
+          "lvl": 10,
+          "left": {
+            "name": "special_bonus_unique_sven_gods_strength_slow_resist"
+          },
+          "right": {
+            "name": "special_bonus_unique_sven_5"
+          },
+          "left_pr": 0.4527743526510481,
+          "right_pr": 0.547225647348952
+        },
+        {
+          "lvl": 15,
+          "left": {
+            "name": "special_bonus_unique_sven_8"
+          },
+          "right": {
+            "name": "special_bonus_unique_sven_3"
+          },
+          "left_pr": 0.3345988357377879,
+          "right_pr": 0.6654011642622121
+        },
+        {
+          "lvl": 20,
+          "left": {
+            "name": "special_bonus_unique_sven_7"
+          },
+          "right": {
+            "name": "special_bonus_unique_sven_stormhammer_cooldown"
+          },
+          "left_pr": 0.700464846019756,
+          "right_pr": 0.29953515398024405
+        },
+        {
+          "lvl": 25,
+          "left": {
+            "name": "special_bonus_unique_sven_4"
+          },
+          "right": {
+            "name": "special_bonus_unique_sven_2"
+          },
+          "left_pr": 0.12720519962859797,
+          "right_pr": 0.872794800371402
+        }
+      ]
+    }
+  }
+]
