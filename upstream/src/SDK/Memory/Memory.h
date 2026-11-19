@@ -23,7 +23,7 @@ namespace Memory
     bool GetModuleInfo(const char* ModuleName, ModuleInfo& Out);
 
     std::uintptr_t FindPattern(std::uintptr_t Base, std::size_t Size, const char* Pattern);
-    std::uintptr_t FindPattern(const char* ModuleName, const char* Pattern);
+    std::uintptr_t FindPattern(const char* ModuleName, const char* Pattern, bool Required = true);
     std::uintptr_t ResolveRelative(std::uintptr_t Address, std::size_t DisplacementOffset, std::size_t InstructionSize);
 
     const char* RttiName(const void* Object);

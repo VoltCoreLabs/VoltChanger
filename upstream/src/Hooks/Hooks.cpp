@@ -2,7 +2,6 @@
 
 #include "EconWearableSpawnHook.h"
 #include "EmblemParticleHook.h"
-#include "FrameStageNotifyHook.h"
 #include "GcRecvHook.h"
 #include "GcSendHook.h"
 #include "GemRulesHook.h"
@@ -18,7 +17,6 @@ bool Hooks::Install()
 {
     bool Ok = true;
     Ok &= RunFrameHook::Install();
-    Ok &= FrameStageNotifyHook::Install();
     Ok &= GcSendHook::Install();
     Ok &= GcRecvHook::Install();
     Ok &= EconWearableSpawnHook::Install();

@@ -3,7 +3,6 @@
 namespace Patterns
 {
     inline constexpr const char* UIEngine = "48 8B 0D ? ? ? ? 48 8B 01 FF 90 E0 02 00 00"; // panorama.dll: "RunScriptInPanelContext takes 1 arguments [script]" -> mov rcx, g_pUIEngine; mov rax, [rcx]; call [rax+2E0h] (GetV8Isolate)
-    inline constexpr const char* FrameStageNotify = "48 89 5C 24 18 48 89 74 24 20 57 48 83 EC 40 48 8B F1 33 FF 48 8B 89 ? ? ? ? 8B DA 48 85 C9"; // client.dll: RTTI CLambdaJob "FrameStageNotify@CSource2Client" -> vtable лямбды -> единственная функция, которая её пишет / vtable CSource2Client [36] +0x120
     inline constexpr const char* GcSend = "48 89 5C 24 10 48 89 6C 24 18 56 41 56 41 57 48 83 EC 30 8B DA 48 8B F1 8B 89 ? ? ? ? 0F BA F3 1F 45 8B F1 4D 8B F8 8B EA 85 C9"; // client.dll: "Send msg %u (%s), %u bytes" -> CGCClient::BSendMessage(this, eMsg, data, size)
     inline constexpr const char* GcRecvPump = "40 57 48 83 EC 70 48 8B F9 48 8B 49 18 48 85 C9 0F 84 ? ? ? ? 48 8B 01 48 8D 94 24 80 00 00 00 FF 50 08 84 C0 0F 84"; // client.dll: "Recv msg %u (%s), %u bytes" -> CGCClient pump (IsMessageAvailable/RetrieveMessage через this+0x18)
     inline constexpr const char* GCClientSystem = "48 8D 0D ? ? ? ? 48 8B 05 ? ? ? ? FF 90 10 02 00 00 33 FF 83 F8 06 77"; // client.dll: CDOTAGCClientSystem::`vftable' -> ctor (статический инициализатор lea rcx, g_GCClientSystem) -> xref lea rcx, g_GCClientSystem перед call [rax+210h]
@@ -30,7 +29,10 @@ namespace Patterns
     inline constexpr const char* ModelActivityTable = "40 57 48 83 EC 30 48 83 B9 ? ? ? ? 00 48 8B F9 75 ? B9 38 00 00 00 48 89 5C 24 48 E8 ? ? ? ?"; // client.dll: SequenceDataChanged -> call от модели (ленивая таблица activity -> варианты, CModel+0x358)
     inline constexpr const char* ModelActivitySequence = "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 48 89 7C 24 20 41 56 41 69 C1 95 E9 D1 5B 48 8B D9"; // client.dll: SequenceDataChanged -> (table, &seq, variant, activity), хеш activity * 5BD1E995
     inline constexpr const char* SequenceDataChanged = "48 8B C4 41 57 48 81 EC 90 00 00 00 0F 29 78 B8 4C 8B F9 48 89 58 18 8B 99 ? ? ? ? 48 89 78 E8"; // client.dll: "CL:  %f tick(%d) curtime(%f) OnDataChanged set act %d seq %d=[%s] variant %d" -> m_NetworkActivity/m_NetworkSequenceIndex -> sequence
-    inline constexpr const char* ParticlePropertyCreate = "48 89 5C 24 08 48 89 74 24 18 55 57 41 56 48 8D 6C 24 C1 48 81 EC 90 00 00 00 8B 05 ? ? ? ?"; // client.dll: "particles/ui_mouseactions/range_finder_cone_start.vpcf" -> call (entity+0x568 CParticleProperty, name, attach, ...) создание партикла на сущности
+    // 2026-11-19 client: both range_finder_cone_start.vpcf callers pass entity+0x568,
+    // name, attach, bool and flags to this function. Keep the prior build as fallback.
+    inline constexpr const char* ParticlePropertyCreate = "4C 8B DC 49 89 5B 08 49 89 6B 18 49 89 73 20 57 48 81 EC 90 00 00 00 8B 05 ? ? ? ? 48 8B E9 F2 0F 10 05 ? ? ? ? 33 C9 F2 0F 11 44 24 44 41 8B F0";
+    inline constexpr const char* ParticlePropertyCreateLegacy = "48 89 5C 24 08 48 89 74 24 18 55 57 41 56 48 8D 6C 24 C1 48 81 EC 90 00 00 00 8B 05 ? ? ? ?";
     inline constexpr const char* HeroGatherLoadout = "4C 89 4C 24 20 48 89 54 24 10 48 89 4C 24 08 55 57 41 54 41 56 48 8D 6C 24 B8 48 81 EC 48 01 00 00"; // current client: hero vtable[532], gather asset-modifier econ views; owner is RCX, output vector is R9
     inline constexpr const char* RunFrame = "48 89 5C 24 10 48 89 6C 24 18 56 57 41 54 41 56 41 57 48 81 EC 80 00 00 00 45 33 F6 48 8B F1 44 89 B1 ? ? ? ? 0F 31"; // panorama.dll: "CUIEngine::RunFrame" / vtable panorama::CUIEngine [5] +0x28
 }

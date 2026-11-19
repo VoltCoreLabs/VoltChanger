@@ -31,9 +31,14 @@ bool C_BaseEntity::Init()
     ModelStateOffset = Schema->GetOffset("CSkeletonInstance", "m_modelState");
     ModelOffset = Schema->GetOffset("CModelState", "m_hModel");
     OwnerEntityOffset = Schema->GetOffset("C_BaseEntity", "m_hOwnerEntity");
-    CreateParticleFn = reinterpret_cast<decltype(CreateParticleFn)>(Memory::FindPattern("client.dll", Patterns::ParticlePropertyCreate));
+    auto ParticleCreate = Memory::FindPattern("client.dll", Patterns::ParticlePropertyCreate, false);
+    if (!ParticleCreate)
+        ParticleCreate = Memory::FindPattern("client.dll", Patterns::ParticlePropertyCreateLegacy, false);
+    CreateParticleFn = reinterpret_cast<decltype(CreateParticleFn)>(ParticleCreate);
     if (!CreateParticleFn)
-        LogW("ParticlePropertyCreate pattern not found");
+        LogW("Optional attack impact effects unavailable: unsupported ParticlePropertyCreate signature; core initialization continues");
+    else
+        Log("ParticlePropertyCreate %#llx", static_cast<unsigned long long>(ParticleCreate));
     SceneNodeOffset = Schema->GetOffset("C_BaseEntity", "m_pGameSceneNode");
     AbsOriginOffset = Schema->GetOffset("CGameSceneNode", "m_vecAbsOrigin");
     if (!SceneNodeOffset || !AbsOriginOffset)

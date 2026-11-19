@@ -111,12 +111,12 @@ std::uintptr_t Memory::FindPattern(std::uintptr_t Base, std::size_t Size, const 
     return 0;
 }
 
-std::uintptr_t Memory::FindPattern(const char* ModuleName, const char* Pattern)
+std::uintptr_t Memory::FindPattern(const char* ModuleName, const char* Pattern, bool Required)
 {
     ModuleInfo Info;
     if (!GetModuleInfo(ModuleName, Info))
     {
-        LogE("Module not loaded: %s", ModuleName);
+        if (Required) LogE("Module not loaded: %s", ModuleName);
         return 0;
     }
 
@@ -127,7 +127,7 @@ std::uintptr_t Memory::FindPattern(const char* ModuleName, const char* Pattern)
             return Result;
     }
 
-    LogE("Pattern not found in %s: %s", ModuleName, Pattern);
+    if (Required) LogE("Pattern not found in %s: %s", ModuleName, Pattern);
     return 0;
 }
 
